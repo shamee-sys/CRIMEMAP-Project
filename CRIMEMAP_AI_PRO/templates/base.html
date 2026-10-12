@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} · CRIMEMAP </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="{{ url_for('overview') }}"><span class="brand-mark">⬡</span><span>CRIME<span class="cyan">MAP AI</span><small>GEOSPATIAL INTELLIGENCE</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <nav>
+      <a class="{{ 'active' if request.endpoint == 'overview' else '' }}" href="{{ url_for('overview') }}"><span>▦</span> Overview</a>
+      <a class="{{ 'active' if request.endpoint == 'crime_map' else '' }}" href="{{ url_for('crime_map') }}"><span>⌖</span> CrimePlus Map</a>
+      <a class="{{ 'active' if request.endpoint == 'analytics' else '' }}" href="{{ url_for('analytics') }}"><span>⌁</span> Analytics & Trends</a>
+      <a class="{{ 'active' if request.endpoint == 'explorer' else '' }}" href="{{ url_for('explorer') }}"><span>▤</span> Incident Explorer</a>
+      <a class="{{ 'active' if request.endpoint == 'hotspots' else '' }}" href="{{ url_for('hotspots') }}"><span>◎</span> Hotspot Intelligence</a>
+      <a class="{{ 'active' if request.endpoint == 'reports' else '' }}" href="{{ url_for('reports') }}"><span>▧</span> Reports</a>
+      <a class="{{ 'active' if request.endpoint == 'about' else '' }}" href="{{ url_for('about') }}"><span>ⓘ</span> About / Methodology</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="shield">⬡</div><b>Safer communities.<br>Smarter decisions.</b><p>Educational prototype for geospatial crime analysis.</p><span class="status-dot"></span> DEMO ENVIRONMENT</div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+      <div><div class="eyebrow">PUDUCHERRY · INDIA</div><div class="top-title">{{ title }}</div></div>
+      <div class="top-right"><span class="live-dot"></span><span>DEMO DATA</span><span class="top-divider"></span><span class="date-display">◷ <span id="todayDate"></span></span><span class="avatar">CM</span></div>
+    </header>
+    <section class="content">
+      <div class="demo-banner"><span>ⓘ</span> <b>DEMO ENVIRONMENT</b> — All incident records are fictional and for educational/hackathon demonstration only. Not official police data.</div>
+      {% block content %}{% endblock %}
+      <footer>CRIMEMAP<span>•</span> Geospatial Crime Intelligence & Decision Support System <span class="footer-right">Fictional demo data · Not official statistics</span></footer>
+    </section>
+  </main>
+</div>
+<script>document.getElementById('todayDate').textContent = new Date().toLocaleDateString(undefined,{day:'2-digit',month:'short',year:'numeric'});document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body></html>

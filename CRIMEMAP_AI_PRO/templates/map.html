@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-heading">
+    <div>
+        <div class="eyebrow">GEOSPATIAL WORKSPACE / 02</div>
+        <h1>Night Vision <span class="cyan">Map</span></h1>
+        <p class="muted">Explore crime locations around Puducherry.</p>
+    </div>
+    <span class="pill">MAP ENGINE READY</span>
+</div>
+
+<div class="panel map-workspace">
+    <div class="map-toolbar">
+        <label>
+            Category
+            <select id="mapCategory">
+                <option>All Categories</option>
+                {% for c in categories %}
+                <option>{{ c }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>
+            Area
+            <select id="mapArea">
+                <option>All Areas</option>
+                {% for a in areas %}
+                <option>{{ a }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>
+            From
+            <input type="date" id="mapStart">
+        </label>
+
+        <label>
+            To
+            <input type="date" id="mapEnd">
+        </label>
+
+        <label>
+            Search location / ID
+            <input type="search" id="mapSearch"
+                   placeholder="Search location or crime ID">
+        </label>
+
+        <button class="btn btn-primary" id="applyMapFilters"
+                type="button">
+            Apply filters
+        </button>
+
+        <button class="btn btn-quiet" id="resetMapFilters"
+                type="button">
+            Reset
+        </button>
+    </div>
+
+    <div class="map-stats">
+        <span>
+            <b id="mapCount">{{ incidents|length }}</b>
+            records shown
+        </span>
+        <span>Dark map | Puducherry</span>
+    </div>
+
+    <div id="crimeMap"
+         class="crime-map"
+         style="width:100%; height:550px; background:#111827;">
+    </div>
+
+    <div class="map-legend">
+        <b>MAP LEGEND</b>
+        <span><i class="legend-dot red"></i> Theft / high count</span>
+        <span><i class="legend-dot orange"></i> Assault</span>
+        <span><i class="legend-dot purple"></i> Burglary</span>
+        <span><i class="legend-dot cyan-dot"></i> Other categories</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const mapElement = document.getElementById("crimeMap");
+
+    if (!mapElement || typeof L === "undefined") {
+        console.error("Map container or Leaflet library is missing.");
+        return;
+    }
+
+    // Prevent creating the map more than once.
+    if (mapElement._leaflet_id) {
+        return;
+    }
+
+    const map = L.map("crimeMap").setView([11.9416, 79.8083], 12);
+
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap contributors"
+        }
+    ).addTo(map);
+
+    const markerLayer = L.layerGroup().addTo(map);
+
+    const incidents = {{ incidents | tojson }};
+
+    const categorySelect = document.getElementById("mapCategory");
+    const areaSelect = document.getElementById("mapArea");
+    const startInput = document.getElementById("mapStart");
+    const endInput = document.getElementById("mapEnd");
+    const searchInput = document.getElementById("mapSearch");
+    const applyButton = document.getElementById("applyMapFilters");
+    const resetButton = document.getElementById("resetMapFilters");
+    const countElement = document.getElementById("mapCount");
+
+    // Read values using common database field names.
+    function getValue(item, keys) {
+        for (const key of keys) {
+            if (
+                item[key] !== undefined &&
+                item[key] !== null &&
+                String(item[key]).trim() !== ""
+            ) {
+                return item[key];
+            }
+        }
+        return "";
+    }
+
+    function normalize(value) {
+        return String(value ?? "").trim().toLowerCase();
+    }
+
+    function getCoordinates(item) {
+        const lat = Number(getValue(item, [
+            "lat", "latitude"
+        ]));
+
+        const lng = Number(getValue(item, [
+            "lng", "lon", "longitude", "long"
+        ]));
+
+        if (
+            !Number.isFinite(lat) ||
+            !Number.isFinite(lng) ||
+            lat < -90 || lat > 90 ||
+            lng < -180 || lng > 180 ||
+            (lat === 0 && lng === 0)
+        ) {
+            return null;
+        }
+
+        return [lat, lng];
+    }
+
+    function getCategory(item) {
+        return normalize(getValue(item, [
+            "category", "crime_type", "crimeType", "type"
+        ]));
+    }
+
+    function getArea(item) {
+        return normalize(getValue(item, [
+            "area", "location", "locality", "neighborhood",
+            "neighbourhood", "police_station"
+        ]));
+    }
+
+    function getDate(item) {
+        return String(getValue(item, [
+            "date", "incident_date", "incidentDate",
+            "crime_date", "reported_at", "timestamp"
+        ])).slice(0, 10);
+    }
+
+    function getSearchText(item) {
+        return normalize([
+            getValue(item, ["id", "incident_id", "crime_id"]),
+            getValue(item, ["location", "area", "locality"]),
+            getValue(item, ["category", "crime_type", "type"]),
+            getValue(item, ["description", "title"]),
+            getValue(item, ["police_station"])
+        ].join(" "));
+    }
+
+    function renderIncidents(records) {
+        markerLayer.clearLayers();
+
+        let markersShown = 0;
+        const bounds = [];
+
+        records.forEach(function (item) {
+            const coordinates = getCoordinates(item);
+
+            // Records without coordinates cannot appear on the map.
+            if (!coordinates) {
+                return;
+            }
+
+            const category = getValue(item, [
+                "category", "crime_type", "crimeType", "type"
+            ]) || "Unspecified";
+
+            const area = getValue(item, [
+                "area", "location", "locality"
+            ]) || "Unknown area";
+
+            const id = getValue(item, [
+                "id", "incident_id", "crime_id"
+            ]) || "N/A";
+
+            const date = getDate(item);
+
+            const marker = L.marker(coordinates);
+
+            marker.bindPopup(
+                "<b>Crime ID:</b> " + escapeHTML(id) +
+                "<br><b>Category:</b> " + escapeHTML(category) +
+                "<br><b>Area:</b> " + escapeHTML(area) +
+                "<br><b>Date:</b> " + escapeHTML(date || "N/A")
+            );
+
+            marker.addTo(markerLayer);
+            bounds.push(coordinates);
+            markersShown++;
+        });
+
+        // Count the filtered records, including those without coordinates.
+        countElement.textContent = records.length;
+
+        if (bounds.length > 0) {
+            map.fitBounds(bounds, {
+                padding: [30, 30],
+                maxZoom: 15
+            });
+        } else {
+            map.setView([11.9416, 79.8083], 12);
+        }
+
+        console.log(
+            "Filtered records:", records.length,
+            "| Markers displayed:", markersShown
+        );
+    }
+
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, function (char) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[char];
+        });
+    }
+
+    function applyFilters() {
+        const selectedCategory = normalize(categorySelect.value);
+        const selectedArea = normalize(areaSelect.value);
+        const startDate = startInput.value;
+        const endDate = endInput.value;
+        const searchText = normalize(searchInput.value);
+
+        if (startDate && endDate && startDate > endDate) {
+            alert("From date must be earlier than or equal to To date.");
+            return;
+        }
+
+        const filtered = incidents.filter(function (item) {
+            const category = getCategory(item);
+            const area = getArea(item);
+            const date = getDate(item);
+            const search = getSearchText(item);
+
+            const categoryMatch =
+                selectedCategory === "all categories" ||
+                category === selectedCategory;
+
+            const areaMatch =
+                selectedArea === "all areas" ||
+                area.includes(selectedArea);
+
+            const startMatch =
+                !startDate || (date && date >= startDate);
+
+            const endMatch =
+                !endDate || (date && date <= endDate);
+
+            const searchMatch =
+                !searchText || search.includes(searchText);
+
+            return categoryMatch &&
+                   areaMatch &&
+                   startMatch &&
+                   endMatch &&
+                   searchMatch;
+        });
+
+        renderIncidents(filtered);
+    }
+
+    function resetFilters() {
+        categorySelect.selectedIndex = 0;
+        areaSelect.selectedIndex = 0;
+        startInput.value = "";
+        endInput.value = "";
+        searchInput.value = "";
+
+        renderIncidents(incidents);
+    }
+
+    applyButton.addEventListener("click", applyFilters);
+    resetButton.addEventListener("click", resetFilters);
+
+    // Allow Enter in the search box to apply filters.
+    searchInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            applyFilters();
+        }
+    });
+
+    // Initial map display.
+    renderIncidents(incidents);
+
+    window.crimeMapInstance = map;
+    window.crimeMapMarkerLayer = markerLayer;
+
+    setTimeout(function () {
+        map.invalidateSize();
+    }, 300);
+});
+</script>
+{% endblock %}

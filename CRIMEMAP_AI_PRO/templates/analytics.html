@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <div class="eyebrow">PATTERN REVIEW / 03</div>
+        <h1>Analytics <span class="cyan">&amp; Trends</span></h1>
+        <p class="muted">
+            Interactive charts summarizing the incident dataset.
+        </p>
+    </div>
+    <span class="pill">CSV-POWERED</span>
+</div>
+
+<div class="stats-grid compact">
+
+    <div class="stat-card">
+        <div>
+            <span class="stat-label">Records analysed</span>
+            <div class="stat-value" id="analyticsTotal">0</div>
+            <span class="stat-foot">Total incident records</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div>
+            <span class="stat-label">Categories</span>
+            <div class="stat-value" id="analyticsCategoryCount">0</div>
+            <span class="stat-foot">Classification types</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div>
+            <span class="stat-label">Areas</span>
+            <div class="stat-value" id="analyticsAreaCount">0</div>
+            <span class="stat-foot">Area groups</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="analytics-grid">
+
+    <section class="panel">
+        <div class="panel-head">
+            <div>
+                <h2>Category Distribution</h2>
+                <p>Count by classification</p>
+            </div>
+        </div>
+
+        <div class="chart-area tall">
+            <canvas id="analyticsCategory"></canvas>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="panel-head">
+            <div>
+                <h2>Incident Trend</h2>
+                <p>Daily record volume based on available dates</p>
+            </div>
+        </div>
+
+        <div class="chart-area tall">
+            <canvas id="analyticsTrend"></canvas>
+        </div>
+    </section>
+
+    <section class="panel full-width">
+        <div class="panel-head">
+            <div>
+                <h2>Area Comparison</h2>
+                <p>Top areas by incident record count</p>
+            </div>
+        </div>
+
+        <div class="chart-area medium">
+            <canvas id="areaChart"></canvas>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+(function () {
+    "use strict";
+
+    const analyticsStats = {{ (stats|default({}, true))|tojson }};
+    const analyticsIncidents = {{ (incidents|default([], true))|tojson }};
+
+    const stats = analyticsStats || {};
+    const incidents = Array.isArray(analyticsIncidents)
+        ? analyticsIncidents
+        : [];
+
+    /*
+       Summary cards
+    */
+
+    const totalElement = document.getElementById("analyticsTotal");
+    const categoryElement = document.getElementById("analyticsCategoryCount");
+    const areaElement = document.getElementById("analyticsAreaCount");
+
+    const categories = new Set();
+    const areas = new Set();
+
+    incidents.forEach(function (item) {
+        const category =
+            item.category ??
+            item.crime_type ??
+            item.incident_type ??
+            item.type ??
+            "Other";
+
+        const area =
+            item.area ??
+            item.location ??
+            item.neighborhood ??
+            item.zone ??
+            "Unknown";
+
+        categories.add(String(category));
+        areas.add(String(area));
+    });
+
+    if (totalElement) {
+        totalElement.textContent = incidents.length;
+    }
+
+    if (categoryElement) {
+        categoryElement.textContent = categories.size;
+    }
+
+    if (areaElement) {
+        areaElement.textContent = areas.size;
+    }
+
+    console.log("Analytics records:", incidents.length);
+    console.log("Analytics stats:", stats);
+
+    /*
+       Render charts when app.js is available
+    */
+
+    if (typeof initAnalytics === "function") {
+        initAnalytics(stats, incidents);
+    } else {
+        console.error(
+            "initAnalytics() is missing. Check static/app.js and base.html."
+        );
+    }
+})();
+</script>
+
+{% endblock %}

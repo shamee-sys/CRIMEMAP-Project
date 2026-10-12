@@ -1,0 +1,121 @@
+id,date,time,category,area,description,latitude,longitude,status
+CM-0040,2026-10-11,23:15,Burglary,Kalapet,Fictional property entry report,12.027565,79.850045,Under Review
+CM-0033,2026-10-11,11:30,Cyber Crime,Thirubhuvanai,Fictional online fraud complaint,11.916988,79.64826,Logged
+CM-0028,2026-10-09,20:45,Assault,Bahour,Demo record: verbal dispute escalated,11.805208,79.751011,Logged
+CM-0036,2026-10-08,16:30,Theft,Nettapakkam,Fictional report of a missing personal item,11.874396,79.650113,Logged
+CM-0120,2026-10-08,08:30,Vandalism,Lawspet,Fictional damage to public property,11.957629,79.81852,Resolved
+CM-0012,2026-10-07,22:15,Theft,Muthialpet,Demo record: reported bicycle theft,11.953685,79.829609,Resolved
+CM-0006,2026-10-07,21:15,Theft,Ariyankuppam,Fictional report of a missing personal item,11.899484,79.809337,Resolved
+CM-0016,2026-10-05,14:15,Vandalism,Kalapet,Demo record: damaged street fixture,12.02041,79.858658,Logged
+CM-0118,2026-10-05,14:15,Assault,Nettapakkam,Demo record: reported altercation,11.864218,79.651187,Resolved
+CM-0086,2026-10-05,10:00,Assault,Ariyankuppam,Fictional public disturbance report,11.889655,79.807776,Under Review
+CM-0043,2026-10-04,21:45,Theft,Villianur,Demo record: reported bicycle theft,11.917868,79.757818,Logged
+CM-0023,2026-10-03,18:15,Burglary,White Town,Demo record: property access concern,11.930233,79.842424,Resolved
+CM-0007,2026-10-02,09:45,Other,Mudaliarpet,Demo record: suspicious activity reported,11.915232,79.820217,Logged
+CM-0034,2026-10-01,22:30,Assault,Oulgaret,Demo record: verbal dispute escalated,11.964096,79.788878,Under Review
+CM-0100,2026-09-27,17:00,Assault,Thirubhuvanai,Fictional public disturbance report,11.922263,79.656216,Under Review
+CM-0005,2026-09-26,06:45,Cyber Crime,Kalapet,Fictional online fraud complaint,12.020832,79.852487,Under Review
+CM-0021,2026-09-25,15:30,Vandalism,Oulgaret,Demo record: graffiti complaint,11.956902,79.780514,Logged
+CM-0041,2026-09-24,19:00,Burglary,White Town,Demo record: attempted break-in reported,11.929501,79.833448,Resolved
+CM-0099,2026-09-23,11:45,Theft,Lawspet,Demo record: unattended bag reported missing,11.952016,79.808187,Under Review
+CM-0090,2026-09-21,08:30,Theft,Muthialpet,Fictional report of a missing personal item,11.939058,79.832447,Logged
+CM-0096,2026-09-20,23:00,Assault,Kalapet,Demo record: verbal dispute escalated,12.02487,79.858561,Logged
+CM-0035,2026-09-20,19:15,Other,Oulgaret,Demo record: suspicious activity reported,11.954365,79.787265,Resolved
+CM-0112,2026-09-20,18:45,Assault,Mudaliarpet,Demo record: reported altercation,11.90942,79.81767,Logged
+CM-0015,2026-09-20,18:00,Burglary,White Town,Demo record: attempted break-in reported,11.936827,79.829338,Logged
+CM-0083,2026-09-20,18:00,Cyber Crime,Thirubhuvanai,Demo record: account security complaint,11.921246,79.65666,Logged
+CM-0031,2026-09-19,21:30,Theft,Oulgaret,Demo record: unattended bag reported missing,11.958673,79.780455,Under Review
+CM-0095,2026-09-18,11:45,Vandalism,Kalapet,Fictional damage to public property,12.026086,79.861586,Logged
+CM-0079,2026-09-18,06:45,Burglary,Mudaliarpet,Demo record: property access concern,11.905204,79.817508,Logged
+CM-0047,2026-09-17,22:45,Theft,Thirubhuvanai,Fictional report of a missing personal item,11.917194,79.645505,Resolved
+CM-0081,2026-09-17,14:15,Cyber Crime,Bahour,Demo record: account security complaint,11.802899,79.739293,Under Review
+CM-0056,2026-09-17,12:30,Vandalism,Kottakuppam,Fictional damage to public property,11.983882,79.843049,Under Review
+CM-0062,2026-09-16,16:00,Other,Oulgaret,Demo record: suspicious activity reported,11.953928,79.787139,Logged
+CM-0114,2026-09-15,22:15,Vandalism,Oulgaret,Fictional damage to public property,11.950813,79.782388,Logged
+CM-0052,2026-09-15,13:30,Cyber Crime,Bahour,Demo record: suspicious message reported,11.808839,79.751125,Under Review
+CM-0071,2026-09-15,12:00,Vandalism,Oulgaret,Fictional damage to public property,11.961479,79.780513,Resolved
+CM-0070,2026-09-13,23:00,Cyber Crime,Ariyankuppam,Fictional online fraud complaint,11.895551,79.80785,Under Review
+CM-0058,2026-09-13,11:45,Vandalism,Lawspet,Fictional damage to public property,11.953298,79.80406,Resolved
+CM-0110,2026-09-12,11:00,Other,Ariyankuppam,Demo record: noise complaint,11.897483,79.820509,Logged
+CM-0084,2026-09-12,09:00,Vandalism,Mudaliarpet,Fictional damage to public property,11.915174,79.832655,Under Review
+CM-0030,2026-09-11,18:45,Burglary,Kalapet,Demo record: attempted break-in reported,12.019789,79.857109,Resolved
+CM-0002,2026-09-11,06:00,Assault,Ariyankuppam,Demo record: reported altercation,11.901924,79.812851,Logged
+CM-0024,2026-09-10,18:15,Vandalism,Muthialpet,Demo record: graffiti complaint,11.950618,79.842848,Resolved
+CM-0109,2026-09-09,17:30,Vandalism,White Town,Demo record: damaged street fixture,11.933345,79.827915,Resolved
+CM-0051,2026-09-08,06:45,Theft,Muthialpet,Demo record: unattended bag reported missing,11.950976,79.829917,Resolved
+CM-0104,2026-09-07,13:30,Assault,Thirubhuvanai,Fictional public disturbance report,11.925848,79.652293,Resolved
+CM-0049,2026-09-06,07:15,Cyber Crime,Kottakuppam,Demo record: account security complaint,11.989443,79.851444,Resolved
+CM-0044,2026-09-05,15:00,Theft,Lawspet,Fictional report of a missing personal item,11.957691,79.806982,Logged
+CM-0069,2026-09-03,12:00,Vandalism,Muthialpet,Demo record: graffiti complaint,11.941987,79.829427,Resolved
+CM-0050,2026-09-02,18:15,Cyber Crime,Mudaliarpet,Demo record: suspicious message reported,11.916988,79.829702,Logged
+CM-0011,2026-09-02,13:00,Vandalism,Muthialpet,Fictional damage to public property,11.94005,79.840019,Under Review
+CM-0089,2026-09-01,14:30,Assault,Kottakuppam,Fictional public disturbance report,11.985479,79.847423,Resolved
+CM-0019,2026-08-31,13:45,Theft,White Town,Demo record: reported bicycle theft,11.93743,79.839026,Logged
+CM-0092,2026-08-31,11:15,Cyber Crime,Nettapakkam,Fictional online fraud complaint,11.862781,79.653711,Under Review
+CM-0087,2026-08-31,09:15,Theft,White Town,Demo record: unattended bag reported missing,11.935827,79.837444,Resolved
+CM-0115,2026-08-29,23:45,Cyber Crime,Thirubhuvanai,Demo record: account security complaint,11.919637,79.643345,Resolved
+CM-0080,2026-08-29,06:15,Cyber Crime,Ariyankuppam,Demo record: account security complaint,11.902425,79.809979,Under Review
+CM-0013,2026-08-28,21:45,Theft,Mudaliarpet,Demo record: unattended bag reported missing,11.905955,79.831018,Logged
+CM-0008,2026-08-26,20:45,Burglary,Bahour,Demo record: attempted break-in reported,11.812917,79.743185,Logged
+CM-0045,2026-08-26,14:30,Cyber Crime,Villianur,Fictional online fraud complaint,11.909594,79.756364,Under Review
+CM-0017,2026-08-26,10:30,Cyber Crime,Nettapakkam,Demo record: account security complaint,11.872364,79.649751,Under Review
+CM-0060,2026-08-25,10:45,Theft,Villianur,Demo record: reported bicycle theft,11.914384,79.753231,Resolved
+CM-0039,2026-08-25,06:00,Cyber Crime,Muthialpet,Demo record: account security complaint,11.94828,79.83337,Under Review
+CM-0022,2026-08-24,12:00,Theft,Ariyankuppam,Demo record: unattended bag reported missing,11.898374,79.819982,Logged
+CM-0037,2026-08-24,11:45,Vandalism,Mudaliarpet,Demo record: graffiti complaint,11.908427,79.824371,Resolved
+CM-0088,2026-08-22,23:00,Burglary,Lawspet,Demo record: attempted break-in reported,11.952583,79.815229,Under Review
+CM-0093,2026-08-22,18:30,Burglary,Lawspet,Demo record: property access concern,11.961845,79.804657,Under Review
+CM-0020,2026-08-22,09:15,Theft,Ariyankuppam,Fictional report of a missing personal item,11.897268,79.818578,Logged
+CM-0046,2026-08-21,11:00,Cyber Crime,Villianur,Fictional online fraud complaint,11.910723,79.752737,Under Review
+CM-0014,2026-08-20,21:00,Theft,Bahour,Demo record: reported bicycle theft,11.797835,79.741128,Under Review
+CM-0065,2026-08-20,07:00,Vandalism,Lawspet,Demo record: damaged street fixture,11.957477,79.804338,Resolved
+CM-0001,2026-08-19,15:45,Burglary,Ariyankuppam,Fictional property entry report,11.902836,79.813594,Resolved
+CM-0073,2026-08-19,07:45,Cyber Crime,Muthialpet,Fictional online fraud complaint,11.953263,79.839341,Resolved
+CM-0054,2026-08-18,06:15,Other,Ariyankuppam,Demo record: suspicious activity reported,11.888713,79.820843,Resolved
+CM-0072,2026-08-17,22:00,Theft,Oulgaret,Demo record: reported bicycle theft,11.953842,79.78209,Resolved
+CM-0119,2026-08-17,18:30,Theft,Thirubhuvanai,Fictional report of a missing personal item,11.917009,79.655457,Under Review
+CM-0094,2026-08-17,12:00,Theft,Muthialpet,Demo record: unattended bag reported missing,11.954433,79.841694,Under Review
+CM-0066,2026-08-16,21:30,Assault,Nettapakkam,Demo record: reported altercation,11.870179,79.652172,Under Review
+CM-0067,2026-08-16,20:15,Burglary,Ariyankuppam,Demo record: attempted break-in reported,11.899631,79.806318,Resolved
+CM-0077,2026-08-16,13:00,Vandalism,Lawspet,Demo record: graffiti complaint,11.958932,79.817238,Resolved
+CM-0059,2026-08-14,12:45,Theft,Mudaliarpet,Fictional report of a missing personal item,11.915918,79.825853,Under Review
+CM-0078,2026-08-12,12:30,Theft,Kalapet,Demo record: unattended bag reported missing,12.015174,79.854911,Under Review
+CM-0102,2026-08-11,23:45,Assault,Muthialpet,Fictional public disturbance report,11.949125,79.841846,Under Review
+CM-0076,2026-08-10,16:15,Assault,Lawspet,Demo record: verbal dispute escalated,11.94939,79.808934,Logged
+CM-0098,2026-08-10,14:15,Cyber Crime,Thirubhuvanai,Demo record: account security complaint,11.916773,79.654219,Logged
+CM-0009,2026-08-09,06:45,Theft,Oulgaret,Fictional report of a missing personal item,11.957807,79.788971,Logged
+CM-0091,2026-08-08,06:00,Vandalism,Muthialpet,Fictional damage to public property,11.941776,79.836171,Resolved
+CM-0055,2026-08-07,15:00,Cyber Crime,Muthialpet,Fictional online fraud complaint,11.942841,79.833788,Resolved
+CM-0101,2026-08-07,13:45,Burglary,Muthialpet,Demo record: attempted break-in reported,11.951342,79.837974,Under Review
+CM-0085,2026-08-07,12:15,Vandalism,Villianur,Demo record: damaged street fixture,11.921436,79.753092,Under Review
+CM-0116,2026-08-05,14:15,Theft,Thirubhuvanai,Demo record: reported bicycle theft,11.920263,79.64342,Logged
+CM-0057,2026-08-04,20:15,Theft,Kottakuppam,Fictional report of a missing personal item,11.989627,79.842378,Under Review
+CM-0103,2026-08-03,22:15,Vandalism,Nettapakkam,Fictional damage to public property,11.875101,79.644969,Under Review
+CM-0004,2026-08-03,21:00,Other,White Town,Demo record: suspicious activity reported,11.941731,79.832895,Logged
+CM-0010,2026-08-01,09:15,Assault,Mudaliarpet,Demo record: verbal dispute escalated,11.904721,79.822571,Under Review
+CM-0105,2026-07-31,08:15,Cyber Crime,Oulgaret,Demo record: account security complaint,11.951724,79.777179,Resolved
+CM-0025,2026-07-30,09:00,Burglary,Bahour,Demo record: property access concern,11.806516,79.742183,Resolved
+CM-0042,2026-07-29,20:00,Theft,Nettapakkam,Demo record: unattended bag reported missing,11.869313,79.643287,Resolved
+CM-0113,2026-07-28,18:45,Theft,Ariyankuppam,Fictional report of a missing personal item,11.89346,79.821405,Under Review
+CM-0018,2026-07-28,14:15,Theft,Lawspet,Demo record: unattended bag reported missing,11.947164,79.814965,Resolved
+CM-0068,2026-07-28,08:30,Cyber Crime,Kottakuppam,Demo record: suspicious message reported,11.97947,79.837216,Under Review
+CM-0111,2026-07-27,22:00,Theft,Mudaliarpet,Fictional report of a missing personal item,11.917306,79.830568,Under Review
+CM-0053,2026-07-27,11:30,Theft,Oulgaret,Demo record: unattended bag reported missing,11.95975,79.790865,Resolved
+CM-0048,2026-07-26,23:15,Vandalism,White Town,Fictional damage to public property,11.937854,79.834901,Logged
+CM-0063,2026-07-25,15:15,Theft,Lawspet,Demo record: unattended bag reported missing,11.950311,79.811961,Resolved
+CM-0026,2026-07-24,22:15,Theft,Lawspet,Fictional report of a missing personal item,11.956863,79.809212,Logged
+CM-0032,2026-07-24,14:15,Assault,Villianur,Demo record: reported altercation,11.921667,79.753175,Resolved
+CM-0106,2026-07-22,13:45,Other,Bahour,Demo record: suspicious activity reported,11.803715,79.74794,Resolved
+CM-0074,2026-07-22,08:30,Theft,Kottakuppam,Demo record: reported bicycle theft,11.988515,79.84549,Logged
+CM-0097,2026-07-22,06:00,Assault,Lawspet,Demo record: reported altercation,11.94844,79.810519,Resolved
+CM-0117,2026-07-20,20:45,Burglary,Kottakuppam,Demo record: attempted break-in reported,11.991145,79.849821,Under Review
+CM-0075,2026-07-19,21:30,Burglary,Lawspet,Demo record: attempted break-in reported,11.961663,79.808688,Logged
+CM-0027,2026-07-19,19:00,Theft,Muthialpet,Fictional report of a missing personal item,11.949427,79.837025,Under Review
+CM-0029,2026-07-19,19:00,Theft,Nettapakkam,Fictional report of a missing personal item,11.864409,79.651431,Under Review
+CM-0038,2026-07-18,18:30,Vandalism,Lawspet,Fictional damage to public property,11.950015,79.819373,Logged
+CM-0108,2026-07-18,14:45,Theft,Thirubhuvanai,Demo record: reported bicycle theft,11.916531,79.653721,Logged
+CM-0082,2026-07-17,08:00,Theft,Villianur,Fictional report of a missing personal item,11.918505,79.751866,Resolved
+CM-0064,2026-07-16,16:30,Theft,Kottakuppam,Fictional report of a missing personal item,11.980092,79.839257,Logged
+CM-0107,2026-07-15,11:45,Theft,Thirubhuvanai,Fictional report of a missing personal item,11.912244,79.64667,Under Review
+CM-0061,2026-07-15,08:30,Assault,Kottakuppam,Fictional public disturbance report,11.982999,79.841006,Under Review
+CM-0003,2026-07-15,07:45,Other,Nettapakkam,Demo record: suspicious activity reported,11.872331,79.648508,Under Review
